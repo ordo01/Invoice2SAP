@@ -25,5 +25,7 @@
   "UiPath.UiAutomation.Activities.MicrosoftAzureComputerVisionOCR.ApiKey": "",
   "UiPath.UiAutomation.Activities.MicrosoftAzureComputerVisionOCR.Endpoint": "",
   "UiPath.UiAutomation.Activities.MicrosoftAzureComputerVisionOCR.Scale": "1",
-  "UiPath.UiAutomation.Activities.MicrosoftAzureComputerVisionOCR.Language": "AutoDetect"
+  "UiPath.UiAutomation.Activities.MicrosoftAzureComputerVisionOCR.Language": "AutoDetect",
+  "UiPath.ScreenOCR.UiPathScreenOCR.Endpoint": "https://beta-ocr.uipath.com/v1/images:annotate",
+  "UiPath.ScreenOCR.UiPathScreenOCR.ApiKey": null
 }
