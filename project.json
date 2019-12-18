@@ -18,7 +18,7 @@
   "studioVersion": "19.9.0.87",
   "projectVersion": "1.4.1",
   "runtimeOptions": {
-    "exceptionHandlerWorkflow": "GlobalHandler.xaml",
+    "exceptionHandlerWorkflow": "Helper\\GlobalHandler.xaml",
     "autoDispose": false,
     "isPausable": true,
     "requiresUserInteraction": true,

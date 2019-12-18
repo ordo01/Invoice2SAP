@@ -7,11 +7,11 @@
     <x:Property Name="mail_folder" Type="InOutArgument(x:String)" />
     <x:Property Name="SAP_username" Type="InOutArgument(x:String)" />
   </x:Members>
-  <sap:VirtualizedContainerService.HintSize>648,2028</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>644.8,2183.2</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <mva:VisualBasic.Settings>Assembly references and imported namespaces for internal implementation</mva:VisualBasic.Settings>
   <TextExpression.NamespacesForImplementation>
-    <scg1:List x:TypeArguments="x:String" Capacity="12">
+    <scg1:List x:TypeArguments="x:String" Capacity="7">
       <x:String>UiPath.Core</x:String>
       <x:String>UiPath.Core.Activities</x:String>
       <x:String>System.Data</x:String>
@@ -22,7 +22,7 @@
     </scg1:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg1:List x:TypeArguments="AssemblyReference" Capacity="26">
+    <scg1:List x:TypeArguments="AssemblyReference" Capacity="15">
       <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities</AssemblyReference>
       <AssemblyReference>System.Data</AssemblyReference>
@@ -40,20 +40,29 @@
       <AssemblyReference>System.Configuration.Install</AssemblyReference>
     </scg1:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Read Variables &amp; directory structure from &quot;DIRECTORY_STRUCTURE.XLSX&quot; - delete all files in this directory if advised" sap:VirtualizedContainerService.HintSize="628,1968" sap2010:WorkflowViewState.IdRef="Sequence_30">
+  <Sequence DisplayName="Read Variables &amp; directory structure from &quot;DIRECTORY_STRUCTURE.XLSX&quot; - delete all files in this directory if advised" sap:VirtualizedContainerService.HintSize="624.8,2083.2" sap2010:WorkflowViewState.IdRef="Sequence_30">
     <Sequence.Variables>
       <Variable x:TypeArguments="s1:String[]" Name="files_to_delete" />
       <Variable x:TypeArguments="sd4:DataTable" Name="db_cleanup" />
       <Variable x:TypeArguments="sd4:DataTable" Name="db_parameter" />
+      <Variable x:TypeArguments="x:String" Name="parametersXLS" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg1:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg1:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:KillProcess ContinueOnError="{x:Null}" Process="{x:Null}" DisplayName="Kill Process" sap:VirtualizedContainerService.HintSize="586,22" sap2010:WorkflowViewState.IdRef="KillProcess_1" ProcessName="Excel" />
-    <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[db_cleanup]" DisplayName="Read Range from XLSX" sap:VirtualizedContainerService.HintSize="586,87" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="dir_structure" WorkbookPath="Default_parameters.xlsx" />
-    <ui:MultipleAssign DisplayName="Get var-content from XLSX" sap:VirtualizedContainerService.HintSize="586,191" sap2010:WorkflowViewState.IdRef="MultipleAssign_4">
+    <ui:KillProcess ContinueOnError="{x:Null}" Process="{x:Null}" DisplayName="Kill Process" sap:VirtualizedContainerService.HintSize="583.2,22.4" sap2010:WorkflowViewState.IdRef="KillProcess_1" ProcessName="Excel" />
+    <Assign DisplayName="Set Path to Parameters XLS" sap:VirtualizedContainerService.HintSize="583.2,60" sap2010:WorkflowViewState.IdRef="Assign_14">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[parametersXLS]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[Directory.GetCurrentDirectory+"Config\Default_parameters.xlsx"]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[db_cleanup]" DisplayName="Read Range from XLSX" sap:VirtualizedContainerService.HintSize="583.2,88" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="dir_structure" WorkbookPath="[parametersXLS]" />
+    <ui:MultipleAssign DisplayName="Get var-content from XLSX" sap:VirtualizedContainerService.HintSize="583.2,192.8" sap2010:WorkflowViewState.IdRef="MultipleAssign_4">
       <ui:MultipleAssign.AssignOperations>
         <scg1:List x:TypeArguments="ui:AssignOperation" Capacity="8">
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_7">
@@ -91,8 +100,8 @@
         </scg1:List>
       </ui:MultipleAssign.AssignOperations>
     </ui:MultipleAssign>
-    <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[db_parameter]" DisplayName="Read Range from XLSX" sap:VirtualizedContainerService.HintSize="586,87" sap2010:WorkflowViewState.IdRef="ReadRange_2" SheetName="other_param" WorkbookPath="Default_parameters.xlsx" />
-    <ui:MultipleAssign DisplayName="Get var-content from XLSX" sap:VirtualizedContainerService.HintSize="586,129" sap2010:WorkflowViewState.IdRef="MultipleAssign_5">
+    <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[db_parameter]" DisplayName="Read Range from XLSX" sap:VirtualizedContainerService.HintSize="583.2,88" sap2010:WorkflowViewState.IdRef="ReadRange_2" SheetName="other_param" WorkbookPath="[parametersXLS]" />
+    <ui:MultipleAssign DisplayName="Get var-content from XLSX" sap:VirtualizedContainerService.HintSize="583.2,130.4" sap2010:WorkflowViewState.IdRef="MultipleAssign_5">
       <ui:MultipleAssign.AssignOperations>
         <scg1:List x:TypeArguments="ui:AssignOperation" Capacity="8">
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_12">
@@ -114,13 +123,13 @@
         </scg1:List>
       </ui:MultipleAssign.AssignOperations>
     </ui:MultipleAssign>
-    <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[db_cleanup]" DisplayName="For Each Row - check if DIR exist and should be purged?" sap:VirtualizedContainerService.HintSize="586,1160" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+    <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[db_cleanup]" DisplayName="For Each Row - check if DIR exist and should be purged?" sap:VirtualizedContainerService.HintSize="583.2,1168.8" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd4:DataRow">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="sd4:DataRow" Name="row" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="create Dir &amp; purge files" sap:VirtualizedContainerService.HintSize="536,1012" sap2010:WorkflowViewState.IdRef="Sequence_33">
+          <Sequence DisplayName="create Dir &amp; purge files" sap:VirtualizedContainerService.HintSize="533.6,1020" sap2010:WorkflowViewState.IdRef="Sequence_33">
             <Sequence.Variables>
               <Variable x:TypeArguments="ui:GenericValue" Name="path" />
               <Variable x:TypeArguments="ui:GenericValue" Name="purge" />
@@ -130,26 +139,26 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg1:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:GetRowItem Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="path" DisplayName="Read path" sap:VirtualizedContainerService.HintSize="494,64" sap2010:WorkflowViewState.IdRef="GetRowItem_2" Row="[row]">
+            <ui:GetRowItem Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="path" DisplayName="Read path" sap:VirtualizedContainerService.HintSize="492,64.8" sap2010:WorkflowViewState.IdRef="GetRowItem_2" Row="[row]">
               <ui:GetRowItem.Value>
                 <OutArgument x:TypeArguments="ui:GenericValue">[path]</OutArgument>
               </ui:GetRowItem.Value>
             </ui:GetRowItem>
-            <ui:CreateDirectory ContinueOnError="{x:Null}" DisplayName="Create Folder if not exist" sap:VirtualizedContainerService.HintSize="494,84" sap2010:WorkflowViewState.IdRef="CreateDirectory_1" Path="[path]" />
-            <ui:GetRowItem Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="purge_first" DisplayName="Read if should be purged" sap:VirtualizedContainerService.HintSize="494,64" sap2010:WorkflowViewState.IdRef="GetRowItem_3" Row="[row]">
+            <ui:CreateDirectory ContinueOnError="{x:Null}" DisplayName="Create Folder if not exist" sap:VirtualizedContainerService.HintSize="492,85.6" sap2010:WorkflowViewState.IdRef="CreateDirectory_1" Path="[path]" />
+            <ui:GetRowItem Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="purge_first" DisplayName="Read if should be purged" sap:VirtualizedContainerService.HintSize="492,64.8" sap2010:WorkflowViewState.IdRef="GetRowItem_3" Row="[row]">
               <ui:GetRowItem.Value>
                 <OutArgument x:TypeArguments="ui:GenericValue">[purge]</OutArgument>
               </ui:GetRowItem.Value>
             </ui:GetRowItem>
-            <If Condition="[purge.ToUpper=&quot;YES&quot;]" DisplayName="If - directory should be purged?" sap:VirtualizedContainerService.HintSize="494,588" sap2010:WorkflowViewState.IdRef="If_7">
+            <If Condition="[purge.ToUpper=&quot;YES&quot;]" DisplayName="If - directory should be purged?" sap:VirtualizedContainerService.HintSize="492,592" sap2010:WorkflowViewState.IdRef="If_7">
               <If.Then>
-                <Sequence sap:VirtualizedContainerService.HintSize="349,440" sap2010:WorkflowViewState.IdRef="Sequence_32">
+                <Sequence sap:VirtualizedContainerService.HintSize="348,442.4" sap2010:WorkflowViewState.IdRef="Sequence_32">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg1:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg1:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <Assign sap:VirtualizedContainerService.HintSize="307,60" sap2010:WorkflowViewState.IdRef="Assign_13">
+                  <Assign sap:VirtualizedContainerService.HintSize="306.4,60" sap2010:WorkflowViewState.IdRef="Assign_13">
                     <Assign.To>
                       <OutArgument x:TypeArguments="s1:String[]">[files_to_delete]</OutArgument>
                     </Assign.To>
@@ -157,19 +166,19 @@
                       <InArgument x:TypeArguments="s1:String[]">[directory.GetFiles(directory.GetCurrentDirectory+"\"+path)]</InArgument>
                     </Assign.Value>
                   </Assign>
-                  <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="307,248" sap2010:WorkflowViewState.IdRef="ForEach`1_6" Values="[files_to_delete]">
+                  <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="306.4,249.6" sap2010:WorkflowViewState.IdRef="ForEach`1_6" Values="[files_to_delete]">
                     <ui:ForEach.Body>
                       <ActivityAction x:TypeArguments="x:String">
                         <ActivityAction.Argument>
                           <DelegateInArgument x:TypeArguments="x:String" Name="file" />
                         </ActivityAction.Argument>
-                        <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="242,114" sap2010:WorkflowViewState.IdRef="Sequence_29">
+                        <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="241.6,115.2" sap2010:WorkflowViewState.IdRef="Sequence_29">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg1:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             </scg1:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <ui:Delete ContinueOnError="{x:Null}" DisplayName="Delete file" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Delete_3" Path="[file]" />
+                          <ui:Delete ContinueOnError="{x:Null}" DisplayName="Delete file" sap:VirtualizedContainerService.HintSize="200,22.4" sap2010:WorkflowViewState.IdRef="Delete_3" Path="[file]" />
                         </Sequence>
                       </ActivityAction>
                     </ui:ForEach.Body>
