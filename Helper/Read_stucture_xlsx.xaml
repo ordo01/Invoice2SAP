@@ -7,7 +7,7 @@
     <x:Property Name="mail_folder" Type="InOutArgument(x:String)" />
     <x:Property Name="SAP_username" Type="InOutArgument(x:String)" />
   </x:Members>
-  <sap:VirtualizedContainerService.HintSize>644.8,2143.2</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>646,2176</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <mva:VisualBasic.Settings>Assembly references and imported namespaces for internal implementation</mva:VisualBasic.Settings>
   <TextExpression.NamespacesForImplementation>
@@ -40,29 +40,30 @@
       <AssemblyReference>System.Configuration.Install</AssemblyReference>
     </scg1:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Read Variables &amp; directory structure from &quot;DIRECTORY_STRUCTURE.XLSX&quot; - delete all files in this directory if advised" sap:VirtualizedContainerService.HintSize="624.8,2083.2" sap2010:WorkflowViewState.IdRef="Sequence_30">
+  <Sequence DisplayName="Read Variables &amp; directory structure from &quot;DIRECTORY_STRUCTURE.XLSX&quot; - delete all files in this directory if advised" sap:VirtualizedContainerService.HintSize="626,2076" sap2010:WorkflowViewState.IdRef="Sequence_30">
     <Sequence.Variables>
       <Variable x:TypeArguments="s1:String[]" Name="files_to_delete" />
       <Variable x:TypeArguments="sd4:DataTable" Name="db_cleanup" />
       <Variable x:TypeArguments="sd4:DataTable" Name="db_parameter" />
       <Variable x:TypeArguments="x:String" Name="parametersXLS" />
+      <Variable x:TypeArguments="ui:GenericValue" Name="xx" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg1:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg1:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:KillProcess ContinueOnError="{x:Null}" Process="{x:Null}" DisplayName="Kill Process" sap:VirtualizedContainerService.HintSize="583.2,22.4" sap2010:WorkflowViewState.IdRef="KillProcess_1" ProcessName="Excel" />
-    <Assign DisplayName="Set Path to Parameters XLS" sap:VirtualizedContainerService.HintSize="583.2,60" sap2010:WorkflowViewState.IdRef="Assign_14">
+    <ui:KillProcess ContinueOnError="{x:Null}" Process="{x:Null}" DisplayName="Kill Process" sap:VirtualizedContainerService.HintSize="584,22" sap2010:WorkflowViewState.IdRef="KillProcess_1" ProcessName="Excel" />
+    <Assign DisplayName="Set Path to Parameters XLS" sap:VirtualizedContainerService.HintSize="584,60" sap2010:WorkflowViewState.IdRef="Assign_14">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[parametersXLS]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="x:Object">[Directory.GetCurrentDirectory+"\Config\Default_parameters.xlsx"]</InArgument>
+        <InArgument x:TypeArguments="x:String">[Environment.CurrentDirectory+"\Config\Default_parameters.xlsx"]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[db_cleanup]" DisplayName="Read Range from XLSX" sap:VirtualizedContainerService.HintSize="583.2,88" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="dir_structure" WorkbookPath="[parametersXLS]" />
-    <ui:MultipleAssign DisplayName="Get var-content from XLSX" sap:VirtualizedContainerService.HintSize="583.2,192.8" sap2010:WorkflowViewState.IdRef="MultipleAssign_4">
+    <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[db_cleanup]" DisplayName="Read Range from XLSX" sap:VirtualizedContainerService.HintSize="584,87" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="dir_structure" WorkbookPath="[parametersXLS]" />
+    <ui:MultipleAssign DisplayName="Get var-content from XLSX" sap:VirtualizedContainerService.HintSize="584,191" sap2010:WorkflowViewState.IdRef="MultipleAssign_4">
       <ui:MultipleAssign.AssignOperations>
         <scg1:List x:TypeArguments="ui:AssignOperation" Capacity="8">
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_7">
@@ -100,8 +101,8 @@
         </scg1:List>
       </ui:MultipleAssign.AssignOperations>
     </ui:MultipleAssign>
-    <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[db_parameter]" DisplayName="Read Range from XLSX" sap:VirtualizedContainerService.HintSize="583.2,88" sap2010:WorkflowViewState.IdRef="ReadRange_2" SheetName="other_param" WorkbookPath="[parametersXLS]" />
-    <ui:MultipleAssign DisplayName="Get var-content from XLSX" sap:VirtualizedContainerService.HintSize="583.2,130.4" sap2010:WorkflowViewState.IdRef="MultipleAssign_5">
+    <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[db_parameter]" DisplayName="Read Range from XLSX" sap:VirtualizedContainerService.HintSize="584,87" sap2010:WorkflowViewState.IdRef="ReadRange_2" SheetName="other_param" WorkbookPath="[parametersXLS]" />
+    <ui:MultipleAssign DisplayName="Get var-content from XLSX" sap:VirtualizedContainerService.HintSize="584,129" sap2010:WorkflowViewState.IdRef="MultipleAssign_5">
       <ui:MultipleAssign.AssignOperations>
         <scg1:List x:TypeArguments="ui:AssignOperation" Capacity="8">
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_12">
@@ -123,7 +124,7 @@
         </scg1:List>
       </ui:MultipleAssign.AssignOperations>
     </ui:MultipleAssign>
-    <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[db_cleanup]" DisplayName="For Each Row - check if DIR exist and should be purged?" sap:VirtualizedContainerService.HintSize="583.2,1168.8" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+    <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[db_cleanup]" DisplayName="For Each Row - check if DIR exist and should be purged?" sap:VirtualizedContainerService.HintSize="584,1168" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd4:DataRow">
           <ActivityAction.Argument>
