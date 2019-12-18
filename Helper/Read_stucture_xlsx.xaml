@@ -7,7 +7,7 @@
     <x:Property Name="mail_folder" Type="InOutArgument(x:String)" />
     <x:Property Name="SAP_username" Type="InOutArgument(x:String)" />
   </x:Members>
-  <sap:VirtualizedContainerService.HintSize>644.8,2183.2</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>644.8,2143.2</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <mva:VisualBasic.Settings>Assembly references and imported namespaces for internal implementation</mva:VisualBasic.Settings>
   <TextExpression.NamespacesForImplementation>
@@ -58,7 +58,7 @@
         <OutArgument x:TypeArguments="x:String">[parametersXLS]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="x:String">[Directory.GetCurrentDirectory+"Config\Default_parameters.xlsx"]</InArgument>
+        <InArgument x:TypeArguments="x:Object">[Directory.GetCurrentDirectory+"\Config\Default_parameters.xlsx"]</InArgument>
       </Assign.Value>
     </Assign>
     <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[db_cleanup]" DisplayName="Read Range from XLSX" sap:VirtualizedContainerService.HintSize="583.2,88" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="dir_structure" WorkbookPath="[parametersXLS]" />
